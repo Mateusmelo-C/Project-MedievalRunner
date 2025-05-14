@@ -4,48 +4,47 @@ html, body {
   margin: 0; 
   padding: 0; 
   overflow: hidden;
-  width: 100vw; 
-  height: 100vh;
   background: black; 
   color: white;
   font-family: 'Press Start 2P', cursive;
 }
 
 body {
-  background-image: url('Fundo-canvas-interativo.gif'); 
-  background-size: cover; 
-  background-repeat: no-repeat; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-image: url("Fundo-canvas-interativo.gif");
+  background-size: cover;
+  background-repeat: no-repeat;
   background-position: center;
   overflow: hidden;
 }
 
 .centered-flex {
   display: flex; 
-  flex-direction: column;
   align-items: center; 
   justify-content: center;
-  text-align: center;
+  height: 100vh;
+  width: 100vw;
 }
 
 h1 {
-  position: fixed; 
-  top: 20px; 
+  font-weight: bolder;
+  position: fixed;
+  top: 70px;
   left: 50%;
   transform: translateX(-50%);
-  background: none; 
   padding: 10px 20px;
-  border: 2px solid #f1ea58; 
-  border-radius: 8px;
-  color: #f1ea58; 
+  border: 5px solid #f1ea58;
+  border-radius: 20px;
+  color: black;
   z-index: 1000;
 }
 
 #menuInicial {
-  width: 100vw; 
-  height: 100vh;
   background: url('Fundo-menu-interativo.gif') center/cover no-repeat;
-  transition: opacity 0.5s;
-  gap: 20px;
 }
 
 #botaoJogar {
@@ -55,13 +54,13 @@ h1 {
   color: black;
   border: 2px solid #f1ea58; 
   border-radius: 10px;
-  box-shadow: 0 0 15px #f1ea58; 
   cursor: pointer;
-  transition: 0.3s;
+  transition: 0.3s, box-shadow 0.3s;
 }
+
 #botaoJogar:hover {
-  background: #b7bbba; 
-  box-shadow: 0 0 25px #b7bbba;
+  background: #33afe2; 
+  box-shadow: 0 0 15px #33afe2;
 }
 
 #gameContainer {
@@ -70,34 +69,81 @@ h1 {
   width: 800px; 
   height: 300px;
   margin: 100px auto 0;
-  border: 3px solid #f1ea58;
+  border: 5px solid #f1ea58;
+  overflow: hidden;
 }
 
 #gameCanvas {
-  display: block; 
-  background: black;
+  display: block;
+}
+
+#playerSprite {
+  position: absolute;
+  width: 70px;
+  height: 100px;
+  pointer-events: none;
 }
 
 #botoesFimDeJogo {
   position: absolute; 
-  top: 50%; left: 50%;
+  top: 50%; 
+  left: 50%;
   transform: translate(-50%, -50%);
   display: flex; 
   flex-direction: column; 
   gap: 15px;
+  z-index: 500;
 }
+
 #botoesFimDeJogo button {
   padding: 10px 30px; 
   font-size: 18px;
   border-radius: 8px; 
   cursor: pointer;
-  font-family: inherit;
 }
+
+#botaoJogar,
+#botoesFimDeJogo button {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 16px;
+  font-weight: bolder;
+  text-transform: uppercase;
+}
+
 #botaoReiniciar { 
   background: #b7bbba; 
   border: 2px solid #b7bbba; 
 }
+
+#botaoReiniciar:hover {
+  background: #33afe2;
+  box-shadow: 0 0 15px #33afe2;
+}
+
 #botaoMenu     { 
   background: #f1ea58; 
   border: 2px solid #f1ea58; 
+}
+
+#botaoMenu:hover {
+  background: #33afe2;
+  box-shadow: 0 0 15px #33afe2;
+}
+
+#botoesFimDeJogo button:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+
+@media (max-width: 850px) {
+  #gameContainer { transform: scale(0.9); }
+}
+@media (max-width: 720px) {
+  #gameContainer { transform: scale(0.8); }
+}
+@media (max-width: 600px) {
+  #gameContainer {
+    transform: scale(0.7);
+    margin-top: 50px;
+  }
 }
